@@ -72,21 +72,14 @@ describe('Log routes', () => {
       { dateOfEvent: '2020-10-10', notes: 'High bake', rating: 4, recipeId: recipe.id }
     ].map(log => Log.insert(log)));
   
-    const res = await request(app)
-      .get('/api/v1/logs');
-
-    // expect(res.body).toEqual(expect.arrayContaining(logs));
-    expect(res.body).toHaveLength(logs.length);
-
-    //   .then(res => {
-    //     logs.forEach(log => {
-    //       expect(res.body).toContainEqual(log);
-    //     });
-    //   });
+    return request(app)
+      .get('/api/v1/logs')
+      .then(res => {
+        logs.forEach(log => {
+          expect(res.body).toContainEqual(log);
+        });
+      });
   });
-  //   return request(app)
-  //   .get('/api/v1/logs')
-  //   .then(res => expect(res.body).toEqual(expect.arrayContaining(logs)));
   
   it('updates a log by id', async() => {
     const recipe = await Recipe.insert({
