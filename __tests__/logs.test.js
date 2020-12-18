@@ -31,7 +31,7 @@ describe('Log routes', () => {
     return request(app)
       .post('/api/v1/logs')
       .send({
-        dateOfEvent: '2020-10-10',
+        dateOfEvent: '10-10-2020',
         notes: 'test',
         rating: 4,
         recipeId: recipe.id
@@ -67,9 +67,9 @@ describe('Log routes', () => {
   
     
     const logs = await Promise.all([
-      { dateOfEvent: '2020-10-10', notes: 'Low bake', rating: 4, recipeId: recipe.id },
-      { dateOfEvent: '2020-10-10', notes: 'Low bake', rating: 4, recipeId: recipe.id },
-      { dateOfEvent: '2020-10-10', notes: 'High bake', rating: 4, recipeId: recipe.id }
+      { dateOfEvent: '10-10-2020', notes: 'Low bake', rating: 4, recipeId: recipe.id },
+      { dateOfEvent: '10-10-2020', notes: 'Low bake', rating: 4, recipeId: recipe.id },
+      { dateOfEvent: '10-10-2020', notes: 'High bake', rating: 4, recipeId: recipe.id }
     ].map(log => Log.insert(log)));
   
     return request(app)
@@ -100,7 +100,7 @@ describe('Log routes', () => {
     });
         
     const log = await Log.insert({
-      dateOfEvent: '2020-10-10',
+      dateOfEvent: '10-10-2020',
       notes: 'test',
       rating: 4,
       recipeId: recipe.id
@@ -109,7 +109,7 @@ describe('Log routes', () => {
     return request(app)
       .put(`/api/v1/logs/${log.id}`)
       .send({
-        dateOfEvent: '2020-11-01',
+        dateOfEvent: '10-10-2020',
         notes: 'bake at 350 degrees',
         rating: 4,
         recipeId: recipe.id
@@ -144,7 +144,7 @@ describe('Log routes', () => {
     });
         
     const log = await Log.insert({
-      dateOfEvent: '2020-10-10',
+      dateOfEvent: '10-10-2020',
       notes: 'test',
       rating: 4,
       recipeId: recipe.id
@@ -182,7 +182,7 @@ describe('Log routes', () => {
     });
   
     const log = await Log.insert({
-      dateOfEvent: '2020-10-10',
+      dateOfEvent: '10-10-2020',
       notes: 'test',
       rating: 4,
       recipeId: recipe.id
